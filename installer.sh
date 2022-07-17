@@ -2,8 +2,7 @@
 # ###############################################
 # SCRIPT : DOWNLOAD AND INSTALL NEOBOOT
 #
-##command=wget https://raw.githubusercontent.com/emil237/neoboot_v9.58/main/installer.sh -O - | /bin/sh ############################################### ###########################################
-versions="17.07.2022"
+##command=wget https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/installer.sh -O - | /bin/sh ############################################### ###########################################
 NEOBOOT='9.58'
 ###########################################
 # Configure where we can find things here #
@@ -13,7 +12,7 @@ PLUGINPATH='/usr/lib/enigma2/python/Plugins/Extensions/NeoBoot'
 REQUIRED='/usr/lib/enigma2/python/Plugins/Extensions/NeoBoot/files'
 TOOLS='/usr/lib/enigma2/python/Tools'
 PREDION='/usr/lib/periodon'
-URL='https://raw.githubusercontent.com/emil237/plugins/main'
+URL='https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main'
 PYTHON_VERSION=$(python -c"import sys; print(sys.hexversion)")
 
 ###########################################
@@ -28,6 +27,7 @@ fi
 
 
 #########################
+
 VERSION=$NEOBOOT
 
 ########################
@@ -96,7 +96,7 @@ clear
 sleep 5
 cd /tmp
 set -e 
-wget "https://raw.githubusercontent.com/emil237/neoboot_v9.58/main/neoboot_v9.58-r02_all.tar.gz"
+wget "https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/neoboot_v9.58-r02_all.tar.gz"
 wait
 tar -xzf neoboot_v9.58-r02_all.tar.gz  -C /
 wait
@@ -127,6 +127,9 @@ init 4
 sleep 2
 init 3
 exit 0
+
+
+
 
 
 

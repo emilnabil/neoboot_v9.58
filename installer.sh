@@ -1,21 +1,30 @@
 #!/bin/bash
 # ###############################################
 # SCRIPT : DOWNLOAD AND INSTALL NEOBOOT
-#
-##command=wget https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/installer.sh -O - | /bin/sh ############################################### ###########################################
-NEOBOOT='9.58'
+# ###########################################
+NEOBOOT='v9.58'
 ###########################################
 # Configure where we can find things here #
 MY_EM="*****************************************************************************************************"
 TMPDIR='/tmp'
 PLUGINPATH='/usr/lib/enigma2/python/Plugins/Extensions/NeoBoot'
+##########################################
 REQUIRED='/usr/lib/enigma2/python/Plugins/Extensions/NeoBoot/files'
+##########################################
 TOOLS='/usr/lib/enigma2/python/Tools'
 PREDION='/usr/lib/periodon'
+##########################################
 URL='https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main'
-PYTHON_VERSION=$(python -c"import sys; print(sys.hexversion)")
+##########################################
+PYTHON_VERSION=$(python -c"import platform; print(platform.python_version())")
 
 ###########################################
+
+# remove old version
+if [ -d $PLUGIN_PATH ]; then
+   rm -rf $PLUGIN_PATH 
+fi
+
 # Python Version Check #
 if python --version 2>&1 | grep -q '^Python 3\.'; then
    echo "You have Python3 image"
@@ -24,13 +33,11 @@ else
    echo "You have Python2 image"
    PYTHON='PY2'
 fi
-
-
 #########################
 
 VERSION=$NEOBOOT
 
-########################
+#######################################
 if [ -f /etc/opkg/opkg.conf ]; then
     STATUS='/var/lib/opkg/status'
     OSTYPE='Opensource'
@@ -41,17 +48,6 @@ elif [ -f /etc/apt/apt.conf ]; then
     OSTYPE='DreamOS'
     OPKG='apt-get update'
     OPKGINSTAL='apt-get install'
-fi
-
-#########################
-if [ $PYTHON = "PY3" ]; then
-    echo ":You have Python3 image ..."
-    PLUGINPY32='NEOBOOT-PYTHON32.tar.gz'
-    rm -rf ${TMPDIR}/"${PLUGINPY32:?}"
-else
-    echo ":You have Python2 image ..."
-    PLUGINPY32='NEOBOOT-PYTHON32.tar.gz'
-    rm -rf ${TMPDIR}/"${PLUGINPY32:?}"    
 fi
 
 #########################
@@ -94,16 +90,20 @@ clear
 
 
 sleep 5
+opkg update
+opkg install wget
+opkg install curl
 cd /tmp
 set -e 
-wget "https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/neoboot_v9.58-r02_all.tar.gz"
+wget "https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/enigma2-plugin-extensions-neoboot_$VERSION-r02_all-restart-GUI.ipk"
 wait
-tar -xzf neoboot_v9.58-r02_all.tar.gz  -C /
+opkg install enigma2-plugin-extensions-neoboot_$VERSION-r02_all-restart-GUI.ipk
 wait
 cd ..
 set +e
-rm -f /tmp/neoboot_v9.58-r02_all.tar.gz
-echo "   UPLOADED BY  >>>>   EMIL_NABIL "   
+rm -f /tmp/enigma2-plugin-extensions-neoboot_$VERSION-r02_all-restart-GUI.ipk
+echo "   UPLOADED BY  >>>>   EMIL_NABIL " 
+echi " SUPPORTED BY  >>>> MOHAMMED_ELSAFTY  " 
 sleep 4;                                                                                                                  
 echo "**********************************************************************************"
 #########################
@@ -123,19 +123,12 @@ echo "**                                                                    *"
 echo "***********************************************************************"
 echo ". >>>>         RESTARING     <<<<"
 echo ""
-init 4
-sleep 2
-init 3
+if [ $OS = 'DreamOS' ]; then
+    systemctl restart enigma2
+else
+    init 6
+fi
 exit 0
-
-
-
-
-
-
-
-
-
 
 
 

@@ -1126,10 +1126,10 @@ class NeoBootImageChoose(Screen):
 
     def chackupdate3(self):
         if fileExists('/usr/bin/fullwget'):
-                            os.system('cd ' + LinkNeoBoot + ';fullwget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/ver.txt; sleep 3;cd /')
+                            os.system('cd ' + LinkNeoBoot + ';fullwget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/ver.txt; sleep 3;cd /')
         if not fileExists('' + LinkNeoBoot + '/ver.txt'):
                     if fileExists('/usr/bin/curl'):
-                            os.system('cd ' + LinkNeoBoot + ';curl -O --ftp-ssl https://raw.githubusercontent.com/emilnabil /neoboot/main/ver.txt;sleep 3;cd /')
+                            os.system('cd ' + LinkNeoBoot + ';curl -O --ftp-ssl https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/ver.txt;sleep 3;cd /')
         if not fileExists('' + LinkNeoBoot + '/ver.txt'):
                     if fileExists('/usr/bin/wget'):
                             os.system('cd ' + LinkNeoBoot + ';wget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/ver.txt; sleep 3;cd /')
@@ -1163,11 +1163,11 @@ class NeoBootImageChoose(Screen):
                 if fileExists('' + LinkNeoBoot + '/plugin.pyo'):
                     os.system('chattr -i ' + LinkNeoBoot + '/plugin.pyo')
                 if fileExists('/usr/bin/curl'):
-                    cmd1 = 'curl -kLs -k https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/installer.sh|sh'
+                    cmd1 = 'curl -kLs -k https://raw.githubusercontent.com/gutosie/neoboot/master/iNB.sh|sh'
                     self.session.open(Console, _('NeoBoot....'), [cmd1])
                     self.close()
                 elif fileExists('/usr/bin/wget'):
-                    cmd1 = 'cd /tmp; rm ./*.sh; wget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/installer.sh;chmod 755 ./installer.sh;sh ./installer.sh; rm ./installer.sh; cd /'
+                    cmd1 = 'cd /tmp; rm ./*.sh; wget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/istaller.sh;chmod 755 ./installer.sh;sh ./installer.sh; rm ./installer.sh; cd /'
                     self.session.open(Console, _('NeoBoot....'), [cmd1])
                     self.close()
                 elif fileExists('/usr/bin/fullwget'):

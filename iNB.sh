@@ -95,15 +95,14 @@ opkg install wget
 opkg install curl
 cd /tmp
 set -e 
-wget "https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/enigma2-plugin-extensions-neoboot_$VERSION-r02_all-restart-GUI.ipk"
+wget "https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/enigma2-plugin-extensions-neoboot_$VERSION-r3-reboot_all.ipk"
 wait
-opkg install enigma2-plugin-extensions-neoboot_$VERSION-r02_all-restart-GUI.ipk
-wait
+opkg install enigma2-plugin-extensions-neoboot_$VERSION-r3-reboot_all.ipk
 cd ..
 set +e
 rm -f /tmp/enigma2-plugin-extensions-neoboot_$VERSION-r02_all-restart-GUI.ipk
 echo "   UPLOADED BY  >>>>   EMIL_NABIL " 
-echi " SUPPORTED BY  >>>> MOHAMMED_ELSAFTY  " 
+echo " SUPPORTED BY  >>>> MOHAMMED_ELSAFTY  " 
 sleep 4;                                                                                                                  
 echo "**********************************************************************************"
 #########################
@@ -129,6 +128,8 @@ else
     init 6
 fi
 exit 0
+
+
 
 
 

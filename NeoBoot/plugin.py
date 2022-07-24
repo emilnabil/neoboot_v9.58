@@ -1101,23 +1101,31 @@ class NeoBootImageChoose(Screen):
             self.session.open(TryQuitMainloop, 3)
         else:
             self.close()
-
     def neoboot_update(self):
-        if fileExists('/.multinfo'):
-            mess = _('Downloading available only from the image Flash.')
-            self.session.open(MessageBox, mess, MessageBox.TYPE_INFO)
+        if fileExists('/etc/hostname'):
+            self.session.open(MessageBox, _('Sorry, It is not Possible To Update NeoBoot Plugin. This Feature Is Not Available In This Version 9.58. Wait our new updates ... Have fun with free Edited Neoboot By M.Elsafty and Eng.Emil'), type=MessageBox.TYPE_INFO, timeout=10)
         else:
-            out = open('%sImageBoot/.neonextboot' % getNeoLocation(), 'w')
-            out.write('Flash')
-            out.close()
-            message = _('\n\n\n')
-            message += _('WARNING !: The update brings with it the risk of errors.\n')
-            message += _('Before upgrading it is recommended that you make a backup NeoBoot.\n')
-            message += _('Do you want to run the update now ?\n')
-            message += _('\n')
-            ybox = self.session.openWithCallback(self.chackupdate2, MessageBox, message, MessageBox.TYPE_YESNO)
-            ybox.setTitle(_('The download neoboot update.'))
-    
+            if checkInternet():
+                if fileExists('/.multinfo'):
+                        mess = _('Downloading available only from the image Flash.')
+                        self.session.open(MessageBox, mess, MessageBox.TYPE_INFO)
+                else:
+                        out = open('%sImageBoot/.neonextboot' % getNeoLocation(), 'w')
+                        out.write('Flash')
+                        out.close()
+                        message = _('\n\n\n')
+                        message += _('WARNING !: The update brings with it the risk of errors.\n')
+                        message += _('Before upgrading it is recommended that you make a backup NeoBoot.\n')
+                        message += _('Do you want to run the update now ?\n')
+                        message += _('\n')
+                        message += _('Select Yes to do update\n')
+                        message += _('\n')
+                        message += _('Select No to do backup\n')
+                        message += _('\n')
+                        ybox = self.session.openWithCallback(self.chackupdate2, MessageBox, message, MessageBox.TYPE_YESNO)
+                        ybox.setTitle(_('The download neoboot update.'))
+
+                    
     def chackupdate2(self, yesno):
         if yesno:
             self.chackupdate3()
@@ -1163,15 +1171,15 @@ class NeoBootImageChoose(Screen):
                 if fileExists('' + LinkNeoBoot + '/plugin.pyo'):
                     os.system('chattr -i ' + LinkNeoBoot + '/plugin.pyo')
                 if fileExists('/usr/bin/curl'):
-                    cmd1 = 'curl -kLs -k https://raw.githubusercontent.com/gutosie/neoboot/master/iNB.sh|sh'
+                    cmd1 = 'curl -kLs -k https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/iNB.sh|sh'
                     self.session.open(Console, _('NeoBoot....'), [cmd1])
                     self.close()
                 elif fileExists('/usr/bin/wget'):
-                    cmd1 = 'cd /tmp; rm ./*.sh; wget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/istaller.sh;chmod 755 ./installer.sh;sh ./installer.sh; rm ./installer.sh; cd /'
+                    cmd1 = 'cd /tmp; rm ./*.sh; wget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/iNB.sh;chmod 755 ./iNB.sh;sh ./iNB.sh; rm ./iNB.sh; cd /'
                     self.session.open(Console, _('NeoBoot....'), [cmd1])
                     self.close()
                 elif fileExists('/usr/bin/fullwget'):
-                    cmd1 = 'cd /tmp; rm ./*.sh; fullwget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/installer.sh;chmod 755 ./installer.sh;sh ./installer.sh; rm ./installer.sh; cd /'
+                    cmd1 = 'cd /tmp; rm ./*.sh; fullwget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/iNB.sh;chmod 755 ./iNB.sh;sh ./iNB.sh; rm ./iNB.sh; cd /'
                     self.session.open(Console, _('NeoBoot....'), [cmd1])
                     self.close()
                 else:

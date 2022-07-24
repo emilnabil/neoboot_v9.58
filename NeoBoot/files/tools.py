@@ -97,7 +97,7 @@ def getNeoActivatedtest():
                 neoactivated = _('Update %s is available.') % getTestToTest()
             else:    
                 if getCheckActivateVip() == getBoxMacAddres() and fileExists('/usr/lib/periodon/.kodn') and getTestToTest() == UPDATEVERSION :
-                    neoactivated = 'NEOBOOT VIP ACTIVATED'                
+                    neoactivated = 'ACTIVATED-BY-M.Elsafty+Emil'                
 
         return neoactivated
 
@@ -135,7 +135,7 @@ class MBTools(Screen):
           <eLabel position="20,935" size="1690,5" backgroundColor="blue" foregroundColor="blue" name="linia" />
           <ePixmap position="25,-1" size="45,65" pixmap="/usr/lib/enigma2/python/Plugins/Extensions/NeoBoot/images/updown.png" alphatest="on" />
           <eLabel backgroundColor="background" font="baslk; 29" foregroundColor="yellow" position="623,-2" size="280,60" text="Menu list NEOBoot" />
-          <eLabel backgroundColor="background" font="baslk; 29" foregroundColor="red" position="1341,195" size="366,60" text="NEOBOOT VIP Activated" />
+          <eLabel backgroundColor="background" font="baslk; 27" foregroundColor="red" position="1341,195" size="366,60" text="ACTIVATED-BY-M.Elsafty+Emil" />
           <widget source="list" render="Listbox" position="20,80" size="1282,855" scrollbarMode="showOnDemand">
           <convert type="TemplatedMultiContent">\n                \t\t{"template": [\n                    \t\t\tMultiContentEntryText(pos = (50, 1), size = (925, 58), flags = RT_HALIGN_LEFT|RT_VALIGN_CENTER, text = 0),\n                    \t\t\tMultiContentEntryPixmapAlphaTest(pos = (6, 4), size = (66, 66), png = 1),\n                    \t\t\t],\n                    \t\t\t"fonts": [gFont("Regular", 35)],\n                    \t\t\t"itemHeight": 60\n                \t\t}\n            \t\t</convert>
           </widget>
@@ -2374,15 +2374,15 @@ class Opis(Screen):
                 if fileExists('' + LinkNeoBoot + '/.location'):
                         system('rm -f ' + LinkNeoBoot + '/.location')
                 if fileExists('/usr/bin/curl'):
-                        cmd1 = 'rm -f /usr/lib/periodon/.kodn; curl -kLs https://raw.githubusercontent.com/gutosie/neoboot/master/iNB.sh|sh'
+                        cmd1 = 'rm -f /usr/lib/periodon/.kodn; curl -kLs https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/iNB.sh|sh'
                         self.session.open(Console, _('NeoBoot....'), [cmd1])
                         self.close()
                 elif fileExists('/usr/bin/wget'):
-                        cmd1 = 'rm -f /usr/lib/periodon/.kodn; cd /tmp; rm ./*.sh; wget --no-check-certificate https://raw.githubusercontent.com/gutosie/neoboot/master/iNB.sh;chmod 755 ./iNB.sh;sh ./iNB.sh; rm ./iNB.sh; cd /'
+                        cmd1 = 'rm -f /usr/lib/periodon/.kodn; cd /tmp; rm ./*.sh; wget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/iNB.sh;chmod 755 ./iNB.sh;sh ./iNB.sh; rm ./iNB.sh; cd /'
                         self.session.open(Console, _('NeoBoot....'), [cmd1])
                         self.close()
                 elif fileExists('/usr/bin/fullwget'):
-                        cmd1 = 'rm -f /usr/lib/periodon/.kodn; cd /tmp; rm ./*.sh; fullwget --no-check-certificate https://raw.githubusercontent.com/gutosie/neoboot/master/iNB.sh;chmod 755 ./iNB.sh;sh ./iNB.sh; rm ./iNB.sh; cd /'
+                        cmd1 = 'rm -f /usr/lib/periodon/.kodn; cd /tmp; rm ./*.sh; fullwget --no-check-certificate https://raw.githubusercontent.com/emilnabil/neoboot_v9.58/main/iNB.sh;chmod 755 ./iNB.sh;sh ./iNB.sh; rm ./iNB.sh; cd /'
                         self.session.open(Console, _('NeoBoot....'), [cmd1])
                         self.close()
                 else:

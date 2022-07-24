@@ -1132,7 +1132,7 @@ def getNeoActivatedtest():
                 neoactivated = _('Update %s is available.') % getTestToTest()
             else:    
                 if getCheckActivateVip() == getBoxMacAddres() and fileExists('/usr/lib/periodon/.kodn') and getTestToTest() == UPDATEVERSION :
-                    neoactivated = 'NEOBOOT VIP ACTIVATED'                
+                    neoactivated = 'ACTIVATED-BY-M.Elsafty+Emil'                
 
         return neoactivated
 

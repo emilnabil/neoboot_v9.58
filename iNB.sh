@@ -21,8 +21,8 @@ PYTHON_VERSION=$(python -c"import platform; print(platform.python_version())")
 ###########################################
 
 # remove old version
-if [ -d $PLUGIN_PATH ]; then
-   rm -rf $PLUGIN_PATH 
+if [ -d $PLUGINPATH ]; then
+   rm -rf $PLUGINPATH 
 fi
 
 # Python Version Check #
@@ -87,8 +87,6 @@ fi
 
 #########################
 clear
-
-
 sleep 5
 opkg update
 opkg install wget
@@ -130,6 +128,9 @@ else
     init 6
 fi
 exit 0
+
+
+
 
 
 
